@@ -1,3 +1,8 @@
+/**
+ * @author Вячеслав Кузеванов
+ * @see Calc
+ * @see Words
+ */
 
 import java.util.Scanner;
 
@@ -19,7 +24,8 @@ public class Main {
             Words words = new Words();
             words.WordsStart();
             } else {
-            System.out.println("Wrong number of task");
+            System.err.println("Wrong number of task");
         }
+    in.close();
     }
 }

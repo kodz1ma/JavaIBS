@@ -1,3 +1,7 @@
+/**
+ * @author Вячсеслав Кузеванов
+ */
+
 import java.util.Scanner;
 
 public class Calc {
@@ -13,6 +17,7 @@ public class Calc {
         num2 = in.nextDouble();
         System.out.print("\nChoose an operator(+,-,*,/): ");
         op = in.next().charAt(0);
+        in.close();
 
         switch(op) {
             case '+': ans = num1 + num2;
@@ -23,7 +28,7 @@ public class Calc {
                 break;
             case '/': ans = num1 / num2;
                 break;
-            default:  System.out.printf("Wrong op");
+            default:  System.err.printf("Wrong op");
                 return;
         }
 

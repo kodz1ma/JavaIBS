@@ -1,3 +1,7 @@
+/**
+ * @author Вячсеслав Кузеванов
+ */
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -11,6 +15,8 @@ public class Words {
         Scanner words = new Scanner(System.in);
 
         String text = words.nextLine().replaceAll("\\s+", " ");
+        words.close();
+        number.close();
 
         String[] separated = text.split(" ");
         int[] ResultArray = new int[100];
@@ -33,7 +39,7 @@ public class Words {
                 }
             }
         } else {
-            System.out.println("Wrong number of words");
+            System.err.println("Wrong number of words");
         }
     }
 }
