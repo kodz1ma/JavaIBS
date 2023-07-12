@@ -5,7 +5,8 @@
 import java.util.Scanner;
 
 public class Calc {
-    public void StartCal() {
+
+    public void StartCal() throws ArithmeticException {
 
         Scanner in = new Scanner(System.in);
         System.out.print("Enter two numbers: ");
@@ -14,12 +15,17 @@ public class Calc {
         System.out.print("\nChoose an operator(+,-,*,/): ");
         char op = in.next().charAt(0);
 
-        if (op != '+' && op != '-' && op !='*' && op != '/'){
-            System.err.printf("Wrong op");
+        double result = calculate(num1, num2, op);
+
+        try {
+            if (result == Double.POSITIVE_INFINITY){
+                throw new ArithmeticException("Divided by zero!!!");
+            }
+        } catch (ArithmeticException e){
+            System.out.println(e.getMessage());
             return;
         }
 
-        double result = calculate(num1, num2, op);
         System.out.print("\nThe result of operation:\n");
         System.out.printf(num1 + " " + op + " " + num2 + " = " + String.format("%.4f", result));
 
@@ -27,7 +33,7 @@ public class Calc {
     }
         public double calculate(double num1, double num2, char op) {
 
-        double ans = 0;
+            double ans = 0;
 
             switch (op) {
                 case '+':
@@ -47,4 +53,4 @@ public class Calc {
 
             return ans;
         }
-    }
+}
