@@ -3,12 +3,24 @@
  * @see Calc
  */
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
 
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter two numbers: ");
+        String num1 = in.next();
+        String num2 = in.next();
+        System.out.print("\nChoose an operator(+,-,*,/): ");
+        char op = in.next().charAt(0);
+        in.close();
+
         Calc calc = new Calc();
-        calc.StartCal();
+        double result = calc.StartCal(num1, num2, op);;
+        System.out.print("\nThe result of operation:\n");
+        System.out.printf(num1 + " " + op + " " + num2 + " = " + String.format("%.4f", result));
+
     }
 }

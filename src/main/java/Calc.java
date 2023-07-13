@@ -2,55 +2,62 @@
  * @author Вячсеслав Кузеванов
  */
 
-import java.util.Scanner;
+import java.util.InputMismatchException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Calc {
 
-    public void StartCal() throws ArithmeticException {
+    public double StartCal(String num1, String num2, char op) {
 
-        Scanner in = new Scanner(System.in);
-        System.out.print("Enter two numbers: ");
-        double num1 = in.nextDouble();
-        double num2 = in.nextDouble();
-        System.out.print("\nChoose an operator(+,-,*,/): ");
-        char op = in.next().charAt(0);
-
-        double result = calculate(num1, num2, op);
+        double ans = 0;
 
         try {
-            if (result == Double.POSITIVE_INFINITY){
-                throw new ArithmeticException("Divided by zero!!!");
+            Pattern pattern = Pattern.compile("[a-zA-Z]");
+            Matcher matcher = pattern.matcher(num1);
+            Matcher matcher2 = pattern.matcher(num2);
+
+            if (matcher.find() || matcher2.find()) {
+                throw new NumberFormatException("Wrong numbers!!!");
             }
-        } catch (ArithmeticException e){
+        } catch (InputMismatchException | NumberFormatException e){
             System.out.println(e.getMessage());
-            return;
+            return ans;
         }
 
-        System.out.print("\nThe result of operation:\n");
-        System.out.printf(num1 + " " + op + " " + num2 + " = " + String.format("%.4f", result));
-
-        in.close();
-    }
-        public double calculate(double num1, double num2, char op) {
-
-            double ans = 0;
+        double num1d = Double.parseDouble(num1.replace(",","."));
+        double num2d = Double.parseDouble(num2.replace(",","."));
 
             switch (op) {
                 case '+':
-                    ans = num1 + num2;
+                    ans = num1d + num2d;
                     break;
                 case '-':
-                    ans = num1 - num2;
+                    ans = num1d - num2d;
                     break;
                 case '*':
-                    ans = num1 * num2;
+                    ans = num1d * num2d;
                     break;
                 case '/':
-                    ans = num1 / num2;
+                    ans = num1d / num2d;
                     break;
                 default:
             }
 
-            return ans;
+        try {
+            if (ans == Double.POSITIVE_INFINITY){
+                throw new ArithmeticException("Divided by zero!!!");
+            }
+            if (String.valueOf(op).matches("[^+-/*]")){
+                throw new Exception("Wrong operator!!!");
+            }
+        } catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
+
+        return ans;
+
+    }
 }
+
