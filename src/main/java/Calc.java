@@ -20,7 +20,7 @@ public class Calc {
             if (matcher.find() || matcher2.find()) {
                 throw new NumberFormatException("Wrong numbers!!!");
             }
-        } catch (InputMismatchException | NumberFormatException e){
+        } catch (NumberFormatException e){
             System.out.println(e.getMessage());
             return ans;
         }
