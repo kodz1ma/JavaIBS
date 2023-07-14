@@ -13,12 +13,16 @@ public class Calc {
             Double.parseDouble(num2.replace(",", "."));
 
             if (String.valueOf(op).matches("[^+-/*]")) {
-                throw new Exception("Wrong OP!!!");
+                throw new RuntimeException("Wrong OP!!!");
             }
         } catch (NumberFormatException e) {
             System.err.println("Numbers contains wrong simbols!!!\n");
-        } catch (Exception e){
+        } catch (RuntimeException e){
             System.err.println(e.getMessage());
+        }
+
+        if (String.valueOf(op).matches("[^+-/*]")) {
+            throw new RuntimeException("Wrong OP!!!");
         }
 
         double num1d = Double.parseDouble(num1.replace(",", "."));
@@ -46,6 +50,10 @@ public class Calc {
             }
         } catch (ArithmeticException e){
                     System.err.println(e.getMessage());
+        }
+
+        if (ans == Double.POSITIVE_INFINITY) {
+            throw new ArithmeticException("Divided by zero!!!");
         }
 
         return ans;
