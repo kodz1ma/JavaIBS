@@ -3,9 +3,8 @@
  */
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,14 +15,25 @@ public class Main {
 
         Map<String, Integer> wordsList = new TreeMap<>();
         String text = TextFile(filepath);
+        List<String> wordsSort = new ArrayList<>();
 
 
         String[] words = text.split(" ");
+
+        for (String word : words) {
+            if (!wordsSort.contains(word)) wordsSort.add(word);
+        }
+
+        Collections.sort(wordsSort);
+        System.out.println("Alphabetically sort words:");
+        System.out.println(wordsSort);
+
         for (String word : words) {
             if (!wordsList.containsKey(word)) wordsList.put(word, 1);
             else wordsList.put(word, wordsList.get(word) + 1);
         }
-        System.out.println("WORDS---Numbers_of_repetitions");
+
+        System.out.println("\nWORDS---Numbers_of_repetitions");
 
         String key = null;
         int value = 0;
@@ -59,9 +69,9 @@ public class Main {
 
         } catch (FileNotFoundException e) {
             System.err.println("File not found!!!");
-            e.printStackTrace();
+            e.getMessage();
         } catch (IOException e) {
-            e.printStackTrace();
+            e.getMessage();
         }
         return text;
     }
