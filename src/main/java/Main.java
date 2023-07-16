@@ -1,31 +1,51 @@
 /**
  * @author Вячеслав Кузеванов
- * @see Calc
- * @see Words
  */
 
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Main {
     public static void main(String[] args) {
 
-    int ch;
-    System.out.print("Enter number of task: (1 - calculator, 2 - string array)\n");
-    Scanner in = new Scanner(System.in);
-    ch = in.next().charAt(0);
+        int array[] = new int[20];
 
-    if (ch == '1') {
+        int max = 10;
+        int min = -10;
 
-        Calc calc = new Calc();
-        calc.StartCal();
+        int max_negative = Integer.MIN_VALUE;
+        int min_positive = Integer.MAX_VALUE;
+        int positive = 0, negative = 0;
 
-        } else if (ch == '2') {
+        int temp;
 
-            Words words = new Words();
-            words.WordsStart();
-            } else {
-            System.err.println("Wrong number of task");
+        System.out.println("Input array:");
+        for (int i = 0; i < array.length; i++) {
+            array[i] = ThreadLocalRandom.current().nextInt(min, max + 1);
+
+            System.out.print(array[i] + " ");
         }
-    in.close();
+
+        for (int i = 0; i < array.length; i++) {
+            if ((array[i] < 0) && (max_negative < array[i])) {
+                max_negative = array[i];
+                negative = i;
+            }
+            if ((array[i] > 0) && (min_positive > array[i])) {
+                min_positive = array[i];
+                positive = i;
+            }
+        }
+
+        System.out.println("\nmaximum negative number: " + negative);
+        System.out.println("minimum positive number: " + positive);
+
+        temp = array[negative];
+        array[negative] = array[positive];
+        array[positive] = temp;
+
+        System.out.println("\nSwitch positions of numers:");
+        System.out.print(Arrays.toString(array));
+
     }
 }
