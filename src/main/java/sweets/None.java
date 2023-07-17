@@ -1,4 +1,8 @@
-public class Candy implements Sweets {
+package sweets;
+
+import logic.SweetsN;
+
+public class None implements SweetsN {
 
     String name;
     int price;
@@ -6,7 +10,7 @@ public class Candy implements Sweets {
 
     String additionalInformation;
 
-    public Candy(String name, int price, int weight, String additionalInformation){
+    public None(String name, int price, int weight, String additionalInformation){
         this.name = name;
         this.price = price;
         this.weight =  weight;

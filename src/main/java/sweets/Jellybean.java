@@ -1,16 +1,19 @@
-public class None implements Sweets {
+package sweets;
 
+import logic.SweetsJ;
+
+public class Jellybean implements SweetsJ {
     String name;
     int price;
     int weight;
 
-    String additionalInformation;
+    String country;
 
-    public None(String name, int price, int weight, String additionalInformation){
+    public Jellybean(String name, int price, int weight, String country){
         this.name = name;
         this.price = price;
         this.weight =  weight;
-        this.additionalInformation = additionalInformation;
+        this.country = country;
     }
 
     public String getName() {
@@ -37,13 +40,11 @@ public class None implements Sweets {
         this.weight = weight;
     }
 
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    public String getCountryOfManufacture() {
+        return country;
     }
 
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
+    public void setCountryOfManufacture(String country) {
+        this.country = country;
     }
-
-
 }

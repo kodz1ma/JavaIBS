@@ -1,4 +1,6 @@
-public interface Sweets {
+package logic;
+
+public interface SweetsN {
     String getName();
 
     void setName(String name);
@@ -14,4 +16,6 @@ public interface Sweets {
     String getAdditionalInformation();
 
     void setAdditionalInformation(String additionalInformation);
+
+
 }

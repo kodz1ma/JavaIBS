@@ -1,14 +1,19 @@
-public class Lollipop implements Sweets{
+package sweets;
+
+import logic.SweetsL;
+
+public class Lollipop implements SweetsL {
     String name;
     int price;
     int weight;
-    String additionalInformation;
 
-    public Lollipop(String name, int price, int weight, String additionalInformation){
+    String flavor;
+
+    public Lollipop(String name, int price, int weight, String flavor){
         this.name = name;
         this.price = price;
         this.weight =  weight;
-        this.additionalInformation = additionalInformation;
+        this.flavor = flavor;
     }
 
     public String getName() {
@@ -35,12 +40,11 @@ public class Lollipop implements Sweets{
         this.weight = weight;
     }
 
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    public String getFlavor() {
+        return flavor;
     }
 
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
     }
-
 }

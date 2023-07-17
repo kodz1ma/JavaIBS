@@ -1,14 +1,20 @@
-public class Jellybean implements Sweets{
+package sweets;
+
+import logic.SweetsC;
+
+public class Candy implements SweetsC {
+
     String name;
     int price;
     int weight;
-    String additionalInformation;
 
-    public Jellybean(String name, int price, int weight, String additionalInformation){
+    int calories;
+
+    public Candy(String name, int price, int weight, int calories){
         this.name = name;
         this.price = price;
         this.weight =  weight;
-        this.additionalInformation = additionalInformation;
+        this.calories = calories;
     }
 
     public String getName() {
@@ -35,12 +41,12 @@ public class Jellybean implements Sweets{
         this.weight = weight;
     }
 
-    public String getAdditionalInformation() {
-        return additionalInformation;
+    public int getCalories() {
+        return calories;
     }
 
-    public void setAdditionalInformation(String additionalInformation) {
-        this.additionalInformation = additionalInformation;
+    public void setCalories(int calories) {
+        this.calories = calories;
     }
 
 }
