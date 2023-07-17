@@ -2,10 +2,7 @@
  * @author Вячеслав Кузеванов
  */
 
-import logic.SweetsC;
-import logic.SweetsJ;
-import logic.SweetsL;
-import logic.SweetsN;
+import logic.Sweets;
 import sweets.Candy;
 import sweets.Jellybean;
 import sweets.Lollipop;
@@ -17,10 +14,7 @@ public class Main {
     public static void main(String[] args) {
 
         Scanner in = new Scanner(System.in);
-        ArrayList<SweetsC> sweetCandys = new ArrayList<>();
-        ArrayList<SweetsJ> sweetJellybeans = new ArrayList<>();
-        ArrayList<SweetsL> sweetLollipops = new ArrayList<>();
-        ArrayList<SweetsN> sweetNone = new ArrayList<>();
+        ArrayList<Sweets> sweet = new ArrayList<>();
 
         int totalPrice = 0;
         int totalWeight = 0;
@@ -39,21 +33,21 @@ public class Main {
             switch (num){
                 case "1":
                     Candy candy = new Candy("Candy \"Птичье молоко\"", 100, 500, 359);
-                    sweetCandys.add(candy);
+                    sweet.add(candy);
                     totalPrice += candy.getPrice();
                     totalWeight += candy.getWeight();
                     System.out.println("Candy \"Птичье молоко\" add in a gift");
                     break;
                 case "2":
                     Jellybean jellybean = new Jellybean("Jellybean \"Мармеладные бобы\"", 200, 350, "USA");
-                    sweetJellybeans.add(jellybean);
+                    sweet.add(jellybean);
                     totalPrice += jellybean.getPrice();
                     totalWeight += jellybean.getWeight();
                     System.out.println("Jellybean \"Мармеладные бобы\" add in a gift");
                     break;
                 case "3":
                     Lollipop lollipop = new Lollipop("Lollipop \"Петушки\"", 60, 80, "Caramel");
-                    sweetLollipops.add(lollipop);
+                    sweet.add(lollipop);
                     totalPrice += lollipop.getPrice();
                     totalWeight += lollipop.getWeight();
                     System.out.println("Lollipop \"Петушки\" add in a gift");
@@ -62,7 +56,7 @@ public class Main {
                     end = true;
                     if ((totalPrice == 0) && (totalWeight == 0)){
                         None none = new None("No sweets have been selected", 0,0, "repeat enter of sweets!");
-                        sweetNone.add(none);
+                        sweet.add(none);
                         totalPrice += none.getPrice();
                         totalWeight += none.getWeight();
                         System.out.println("No sweets have been selected!");
@@ -74,21 +68,17 @@ public class Main {
         int count = 0;
 
         System.out.println("\nGift:");
-        for (SweetsC sweetC:sweetCandys) {
+        for (Sweets sweets:sweet) {
             count++;
-            System.out.println(count + ". " + sweetC.getName() + " - " + sweetC.getCalories() + " cal");
-        }
-        for (SweetsL sweetL:sweetLollipops){
-            count++;
-            System.out.println(count + ". " + sweetL.getName() + " - " + "Falvor: " + sweetL.getFlavor());
-        }
-        for (SweetsJ sweetJ:sweetJellybeans){
-            count++;
-            System.out.println(count + ". " + sweetJ.getName() + " - " + "From country: " + sweetJ.getCountryOfManufacture());
-        }
-        for (SweetsN sweetN:sweetNone){
-            count++;
-            System.out.println(count + ". " + sweetN.getName() + " - " + sweetN.getAdditionalInformation());
+            if (sweets.getAdditionalInformation() != null){
+            System.out.println(sweets.getName() + ": " + sweets.getAdditionalInformation());
+            } else if (sweets.getCalories() != 0) {
+                System.out.println(count + ". " + sweets.getName() + " - " + sweets.getCalories() + " cal (in 100 g.)");
+            } else if (sweets.getCountryOfManufacture() != null) {
+                System.out.println(count + ". " + sweets.getName() + " - " + "From country: " + sweets.getCountryOfManufacture());
+            } else if (sweets.getFlavor() != null) {
+                System.out.println(count + ". " + sweets.getName() + " - " + "Falvor: " + sweets.getFlavor());
+            }
         }
 
         System.out.println(String.format("\nWeight of the gift: %s g.\nPrise of the gift: %s rub.", totalWeight, totalPrice));

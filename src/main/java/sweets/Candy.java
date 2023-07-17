@@ -1,14 +1,17 @@
 package sweets;
 
-import logic.SweetsC;
+import logic.Sweets;
 
-public class Candy implements SweetsC {
+public class Candy implements Sweets {
 
     String name;
     int price;
     int weight;
 
     int calories;
+    String country;
+    String flavor;
+    String additionalInformation;
 
     public Candy(String name, int price, int weight, int calories){
         this.name = name;
@@ -49,4 +52,27 @@ public class Candy implements SweetsC {
         this.calories = calories;
     }
 
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
+    public String getCountryOfManufacture() {
+        return country;
+    }
+
+    public void setCountryOfManufacture(String country) {
+        this.country = country;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
+    }
 }

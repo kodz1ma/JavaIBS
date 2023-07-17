@@ -1,13 +1,16 @@
 package sweets;
 
-import logic.SweetsL;
+import logic.Sweets;
 
-public class Lollipop implements SweetsL {
+public class Lollipop implements Sweets {
     String name;
     int price;
     int weight;
 
+    int calories;
+    String country;
     String flavor;
+    String additionalInformation;
 
     public Lollipop(String name, int price, int weight, String flavor){
         this.name = name;
@@ -40,11 +43,35 @@ public class Lollipop implements SweetsL {
         this.weight = weight;
     }
 
+    public int getCalories() {
+        return calories;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
     public String getFlavor() {
         return flavor;
     }
 
     public void setFlavor(String flavor) {
         this.flavor = flavor;
+    }
+
+    public String getCountryOfManufacture() {
+        return country;
+    }
+
+    public void setCountryOfManufacture(String country) {
+        this.country = country;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 }

@@ -1,6 +1,6 @@
 package logic;
 
-public interface SweetsN {
+public interface Sweets {
     String getName();
 
     void setName(String name);
@@ -12,6 +12,18 @@ public interface SweetsN {
     int getWeight();
 
     void setWeight(int weight);
+
+    int getCalories();
+
+    void setCalories(int Calories);
+
+    String getFlavor();
+
+    void setFlavor(String flavor);
+
+    String getCountryOfManufacture();
+
+    void setCountryOfManufacture(String country);
 
     String getAdditionalInformation();
 

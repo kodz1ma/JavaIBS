@@ -1,13 +1,16 @@
 package sweets;
 
-import logic.SweetsJ;
+import logic.Sweets;
 
-public class Jellybean implements SweetsJ {
+public class Jellybean implements Sweets {
     String name;
     int price;
     int weight;
 
+    int calories;
     String country;
+    String flavor;
+    String additionalInformation;
 
     public Jellybean(String name, int price, int weight, String country){
         this.name = name;
@@ -40,11 +43,35 @@ public class Jellybean implements SweetsJ {
         this.weight = weight;
     }
 
+    public int getCalories() {
+        return calories;
+    }
+
+    public void setCalories(int calories) {
+        this.calories = calories;
+    }
+
+    public String getFlavor() {
+        return flavor;
+    }
+
+    public void setFlavor(String flavor) {
+        this.flavor = flavor;
+    }
+
     public String getCountryOfManufacture() {
         return country;
     }
 
     public void setCountryOfManufacture(String country) {
         this.country = country;
+    }
+
+    public String getAdditionalInformation() {
+        return additionalInformation;
+    }
+
+    public void setAdditionalInformation(String additionalInformation) {
+        this.additionalInformation = additionalInformation;
     }
 }
